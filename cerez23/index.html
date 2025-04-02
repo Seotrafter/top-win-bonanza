@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KahramanTıkla | Click Chronicles Idle Hero</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel='icon' href='/src/icons/logo.png' type='image/x-icon'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#20686c',
+                        secondary: '#005236',
+                        tertiary: '#bc4f07',
+                        accent: '#6bc4a6',
+                        light: '#ffffff'
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': {
+                                transform: 'translateY(0)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-10px)'
+                            },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: "Work Sans", sans-serif;
+        }
+
+        .title-sec {
+            font-family: "Sigmar", sans-serif;
+        }
+
+        .bg-dots {
+            background-image: radial-gradient(#20686c 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .rainbow-line {
+            background: linear-gradient(90deg, #20686c, #005236, #bc4f07, #6bc4a6);
+            height: 4px;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Card hover animations */
+        .shadow-lg {
+            transition: all 0.3s ease;
+        }
+
+        /* Floating elements animation */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .float-element {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Enhanced link styles */
+        .text-tertiary {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .text-tertiary:hover {
+            color: #bc4f07;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-gray-800 bg-light">
+    <!-- Floating Elements -->
+    <div class="fixed w-full h-full pointer-events-none z-0 bg-dots opacity-10"></div>
+
+    <!-- Rainbow Line -->
+    <div class="rainbow-line w-full"></div>
+
+    <!-- Header -->
+    <header class="sticky top-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between">
+            <a href="/" class="flex items-center mb-4 md:mb-0">
+                <img src="/src/icons/logo.png" alt="KahramanTıkla Logo" class="w-12 h-12  mr-3">
+                <span class="text-3xl title-sec font-bold text-primary">KahramanTıkla</span>
+            </a>
+
+            <nav class="flex flex-wrap justify-center space-x-1 md:space-x-6">
+                <a href="/#anasayfa" class="px-3 py-2 text-lg font-semibold text-primary hover:text-tertiary transition-colors duration-300">Ana Sayfa</a>
+                <a href="/#oynanış" class="px-3 py-2 text-lg font-semibold text-primary hover:text-tertiary transition-colors duration-300">Oynanış</a>
+                <a href="/#hikaye" class="px-3 py-2 text-lg font-semibold text-primary hover:text-tertiary transition-colors duration-300">Hikaye</a>
+                <a href="/#özellikler" class="px-3 py-2 text-lg font-semibold text-primary hover:text-tertiary transition-colors duration-300">Özellikler</a>
+                <a href="/#indirme" class="px-3 py-2 text-lg font-semibold text-white bg-tertiary hover:bg-primary rounded-lg transition-colors duration-300 shadow-lg">İndir</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Cookie Policy Header Section -->
+    <section class="py-16 bg-accent relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <!-- Wave pattern -->
+            <svg class="absolute bottom-0 left-0 w-full h-20 text-white opacity-10" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="currentColor" d="M0,128L48,138.7C96,149,192,171,288,165.3C384,160,480,128,576,112C672,96,768,96,864,122.7C960,149,1056,203,1152,208C1248,213,1344,171,1392,149.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+
+        <!-- Decorative circles -->
+        <div class="absolute top-10 right-10 w-24 h-24 rounded-full border-4 border-primary opacity-10"></div>
+        <div class="absolute bottom-10 left-10 w-16 h-16 bg-tertiary rounded-full opacity-10"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <h1 class="text-4xl md:text-6xl font-bold text-primary mb-6">Çerez Politikası</h1>
+                <div class="w-24 h-2 bg-tertiary mx-auto rounded-full mb-8"></div>
+                <p class="text-xl text-primary opacity-90">
+                    KahramanTıkla web sitesi çerez kullanımına ilişkin bilgiler
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cookie Policy Introduction Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border-t-4 border-primary">
+                <div class="mb-10 text-center">
+                    <h2 class="text-3xl font-bold text-primary mb-6">Çerezler Hakkında</h2>
+                    <div class="w-16 h-1 bg-tertiary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="prose prose-lg max-w-none">
+                    <p class="text-lg text-gray-700 mb-6">
+                        KahramanTıkla olarak, web sitemizi ziyaretinizi mümkün olan en iyi şekilde kişiselleştirmek ve geliştirmek için çerezleri kullanıyoruz. Bu politika, çerezlerin ne olduğunu, bunları nasıl kullandığımızı ve bunları kontrol etme seçeneklerinizi açıklamaktadır.
+                    </p>
+
+                    <div class="bg-gray-50 p-6 rounded-xl my-8 border-l-4 border-accent">
+                        <h3 class="text-xl font-bold text-primary mb-4 flex items-center">
+                            <span class="w-8 h-8 bg-accent text-primary rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-question"></i>
+                            </span>
+                            Çerez Nedir?
+                        </h3>
+                        <p class="text-lg text-gray-700">
+                            Çerezler, ziyaret ettiğiniz web siteleri tarafından bilgisayarınıza, akıllı telefonunuza veya diğer cihazlarınıza yerleştirilen küçük metin dosyalarıdır. Tarayıcınız veya cihazınız tarafından saklanırlar. Bir web sitesinin tarayıcınızı veya cihazınızı tanımasına ve web sitesini nasıl kullandığınızı hatırlamasına yardımcı olurlar. Ayrıca, web sitesinin güvenli bir şekilde çalışmasını, daha verimli olmasını sağlarlar ve web sitesi sahiplerine ziyaretçiler ve site kullanımı hakkında analitik bilgiler sağlarlar.
+                        </p>
+                    </div>
+
+                    <p class="text-lg text-gray-700 mb-6">
+                        Çerezleri kullanarak web sitemizdeki deneyiminizi geliştirmemize yardımcı oluyorsunuz. Çerezlerin çoğu, kişisel bilgilerinize zarar vermez ve sizi doğrudan tanımlamaz. Sitemizi ziyaret etmeye devam ederek, çerezleri kullanmamızı kabul etmiş olursunuz.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Cookie Types Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-primary mb-6">Kullandığımız Çerez Türleri</h2>
+                    <div class="w-16 h-1 bg-tertiary mx-auto rounded-full"></div>
+                    <p class="text-lg text-gray-700 mt-6 max-w-3xl mx-auto">
+                        Web sitemizde farklı amaçlar için çeşitli çerez türleri kullanıyoruz. İşte web sitemizde kullanılan çerez türlerinin bir özeti:
+                    </p>
+                </div>
+
+                <!-- Essential Cookies Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-primary mb-10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <span class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            Zorunlu Çerezler
+                        </h3>
+                        <div class="pl-0 md:pl-14">
+                            <p class="text-lg text-gray-700 mb-4">
+                                Bu çerezler, web sitemizin çalışması için gereklidir ve sistemlerimizde kapatılamazlar. Genellikle, gizlilik tercihleriniz, oturum açma veya form doldurma gibi hizmetlere yönelik taleplerinize yanıt olarak ayarlanırlar. Tarayıcınızı bu çerezleri engelleyecek şekilde ayarlayabilirsiniz, ancak bu durumda sitenin bazı bölümleri düzgün çalışmayabilir.
+                            </p>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-sm font-semibold text-primary">Örnek çerezler:</p>
+                                <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                                    <li>• Oturum çerezleri</li>
+                                    <li>• Çerez tercih durumu</li>
+                                    <li>• Güvenlik çerezleri</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Cookies Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-secondary mb-10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <span class="w-10 h-10 bg-secondary text-white rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-chart-line"></i>
+                            </span>
+                            Performans Çerezleri
+                        </h3>
+                        <div class="pl-0 md:pl-14">
+                            <p class="text-lg text-gray-700 mb-4">
+                                Bu çerezler, ziyaretçilerin web sitemizi nasıl kullandığına dair bilgileri toplamak için kullanılır. Ziyaretçi sayısını, ziyaretçilerin geldiği kaynakları ve web sitemizdeki hangi sayfaları ziyaret ettiklerini izlememize yardımcı olurlar. Bu çerezlerin topladığı bilgiler toplu halde tutulur ve bu nedenle anonimdir. Bu çerezlere izin vermezseniz, web sitemizi ziyaret ettiğinizde deneyiminizi iyileştirmemize yardımcı olamazsınız.
+                            </p>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-sm font-semibold text-primary">Örnek çerezler:</p>
+                                <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                                    <li>• Google Analytics</li>
+                                    <li>• Sayfa gösterim sayıları</li>
+                                    <li>• Trafik kaynakları</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Functional Cookies Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-tertiary mb-10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <span class="w-10 h-10 bg-tertiary text-white rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-cogs"></i>
+                            </span>
+                            İşlevsellik Çerezleri
+                        </h3>
+                        <div class="pl-0 md:pl-14">
+                            <p class="text-lg text-gray-700 mb-4">
+                                Bu çerezler, web sitemizde gelişmiş işlevsellik ve kişiselleştirme sağlamamıza olanak tanır. Bunlar, biz veya web sitemize eklediğimiz hizmetleri sağlayan üçüncü taraflar tarafından ayarlanabilir. Bu çerezlere izin vermezseniz, bu hizmetlerin bazıları veya tümü düzgün çalışmayabilir.
+                            </p>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-sm font-semibold text-primary">Örnek çerezler:</p>
+                                <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                                    <li>• Dil tercihleri</li>
+                                    <li>• Video oynatıcı tercihleri</li>
+                                    <li>• Sosyal medya araçları</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Targeting Cookies and Cookie Control Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <!-- Targeting Cookies Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-accent mb-10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <span class="w-10 h-10 bg-accent text-primary rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-bullseye"></i>
+                            </span>
+                            Hedefleme Çerezleri
+                        </h3>
+                        <div class="pl-0 md:pl-14">
+                            <p class="text-lg text-gray-700 mb-4">
+                                Bu çerezler, reklam ortaklarımız tarafından web sitemiz aracılığıyla ayarlanabilir. Bu şirketler, ilgi alanlarınız hakkında bilgi toplamak ve size diğer sitelerde ilgili reklamları göstermek için bunları kullanabilir. Doğrudan kişisel bilgilerinizi saklamazlar, ancak tarayıcınızı ve internet cihazınızı benzersiz şekilde tanımlamaları mümkündür. Bu çerezlere izin vermezseniz, farklı web sitelerinde daha az hedefli reklam deneyimi yaşarsınız.
+                            </p>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <p class="text-sm font-semibold text-primary">Örnek çerezler:</p>
+                                <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                                    <li>• Google Advertising çerezleri</li>
+                                    <li>• Facebook pikseli</li>
+                                    <li>• Diğer reklam ağı çerezleri</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Third Party Cookies Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-primary mb-10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <span class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-share-alt"></i>
+                            </span>
+                            Üçüncü Taraf Çerezleri
+                        </h3>
+                        <div class="pl-0 md:pl-14">
+                            <p class="text-lg text-gray-700 mb-4">
+                                Web sitemizde, üçüncü taraf hizmetlerden çerezler de bulunabilir. Bu çerezler hakkında tam kontrol sahibi değiliz. Bu üçüncü taraf çerezler şunları içerebilir:
+                            </p>
+                            <ul class="space-y-2 ml-5 mb-4">
+                                <li class="flex items-start">
+                                    <span class="text-tertiary mr-2">•</span>
+                                    <span>Google Analytics, web sitesi trafiğimizi analiz etmek için kullanılır.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-tertiary mr-2">•</span>
+                                    <span>Google AdSense, web sitemizde size ilgili reklamlar sunmak için kullanılır.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-tertiary mr-2">•</span>
+                                    <span>Sosyal medya düğmeleri aracılığıyla gelen çerezler (Facebook, Twitter, Instagram vb.).</span>
+                                </li>
+                            </ul>
+                            <p class="text-lg text-gray-700">
+                                Her üçüncü taraf hizmet kendi çerez politikasına sahiptir ve bunlar üzerinde sınırlı kontrolümüz vardır. Bu üçüncü taraf çerezlerin nasıl kullanıldığı hakkında daha fazla bilgi edinmek için ilgili üçüncü taraf web sitelerini ziyaret etmenizi öneririz.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cookie Control Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-secondary mb-10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <span class="w-10 h-10 bg-secondary text-white rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-sliders-h"></i>
+                            </span>
+                            Çerezleri Nasıl Kontrol Edebilirsiniz?
+                        </h3>
+                        <div class="pl-0 md:pl-14">
+                            <p class="text-lg text-gray-700 mb-4">
+                                Çoğu web tarayıcısı, çerezlerin nasıl yönetileceğini kontrol etmenize olanak tanır. Tarayıcı ayarlarınızı değiştirerek çerezleri engelleyebilir veya silebilirsiniz. Aşağıda yaygın tarayıcılardaki çerez ayarlarını yönetmeye ilişkin bilgiler bulunmaktadır:
+                            </p>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                                <a href="https://support.google.com/chrome/answer/95647" target="_blank" class="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition-colors flex items-center">
+                                    <span class="w-8 h-8 bg-tertiary text-white rounded-full flex items-center justify-center mr-3">
+                                        <i class="fab fa-chrome"></i>
+                                    </span>
+                                    <span>Google Chrome</span>
+                                </a>
+                                <a href="https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer" target="_blank" class="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition-colors flex items-center">
+                                    <span class="w-8 h-8 bg-tertiary text-white rounded-full flex items-center justify-center mr-3">
+                                        <i class="fab fa-firefox"></i>
+                                    </span>
+                                    <span>Mozilla Firefox</span>
+                                </a>
+                                <a href="https://support.microsoft.com/en-us/windows/microsoft-edge-browsing-data-and-privacy-bb8174ba-9d73-dcf2-9b4a-c582b4e640dd" target="_blank" class="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition-colors flex items-center">
+                                    <span class="w-8 h-8 bg-tertiary text-white rounded-full flex items-center justify-center mr-3">
+                                        <i class="fab fa-edge"></i>
+                                    </span>
+                                    <span>Microsoft Edge</span>
+                                </a>
+                                <a href="https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac" target="_blank" class="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition-colors flex items-center">
+                                    <span class="w-8 h-8 bg-tertiary text-white rounded-full flex items-center justify-center mr-3">
+                                        <i class="fab fa-safari"></i>
+                                    </span>
+                                    <span>Safari</span>
+                                </a>
+                            </div>
+
+                            <p class="text-lg text-gray-700">
+                                Çerezleri tamamen devre dışı bırakmak, web sitemizin bazı özelliklerini kullanmanızı engelleyebilir. Ayrıca, aşağıdaki bağlantıyı ziyaret ederek çevrimiçi davranışsal reklamcılıktan çıkabilirsiniz: <a href="http://www.youronlinechoices.com" target="_blank" class="text-tertiary hover:underline font-medium">www.youronlinechoices.com</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Policy Updates Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-10 text-center">
+                    <h2 class="text-3xl font-bold text-primary mb-6">Çerez Politikası Güncellemeleri</h2>
+                    <div class="w-16 h-1 bg-tertiary mx-auto rounded-full mb-6"></div>
+                    <p class="text-lg text-gray-700">
+                        Bu Çerez Politikasını zaman zaman güncelleyebiliriz. Herhangi bir değişiklik yaptığımızda, bu sayfaya güncellenmiş bir versiyon yerleştireceğiz. Çerez politikamızda önemli değişiklikler olması durumunda, web sitemizde bir bildirim yayınlayarak veya size doğrudan bir bildirim göndererek sizi bilgilendireceğiz.
+                    </p>
+                </div>
+
+                <div class="bg-primary text-white p-8 rounded-xl shadow-lg">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold mb-4">
+                            <i class="fas fa-check-circle mr-2"></i> Onay
+                        </h3>
+                        <p class="text-lg opacity-90">
+                            Web sitemizi kullanarak, bu Çerez Politikasında belirtildiği gibi çerezleri kullanmamızı kabul etmiş olursunuz. Çerezleri nasıl yönettiğimiz hakkında herhangi bir sorunuz varsa, lütfen bizimle iletişime geçin.
+                        </p>
+                        <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                            <a href="/" class="px-8 py-4 bg-tertiary text-white text-lg font-bold rounded-lg hover:bg-accent hover:text-primary transition-colors duration-300 shadow-lg">
+                                <i class="fas fa-home mr-2"></i> Ana Sayfaya Dön
+                            </a>
+                            <a href="/Gizlilik826/" class="px-8 py-4 bg-accent text-primary text-lg font-bold rounded-lg hover:bg-tertiary hover:text-white transition-colors duration-300 shadow-lg">
+                                <i class="fas fa-user-shield mr-2"></i> Gizlilik Politikası
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="py-10 bg-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="/" class="flex items-center">
+                        <img src="/src/icons/logo.png" alt="KahramanTıkla Logo" class="w-10 h-10 mr-3">
+                        <span class="text-2xl font-bold">KahramanTıkla</span>
+                    </a>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-4 mb-6 md:mb-0">
+                    <a href="/Gizlilik826/" class="text-sm font-medium hover:text-accent transition-colors duration-300">Gizlilik Politikası</a>
+                    <a href="/Kullanım346/" class="text-sm font-medium hover:text-accent transition-colors duration-300">Kullanım Koşulları</a>
+                    <a href="/cerez23/" class="text-sm font-medium hover:text-accent transition-colors duration-300">Çerezler</a>
+                    <a href="mailto:service@top-win-bonanza.com" class="text-sm font-medium hover:text-accent transition-colors duration-300">İletişim</a>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-white/20 text-center text-sm">
+                <p>© 2025 KahramanTıkla. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll animation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+
+<?php
+$cookieConsentHtml = '
+<style>
+.cookie-consent {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 101;
+    background: #20686c; 
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    border-top: 3px solid #bc4f07;
+}
+
+.cookie-container {
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cookie-content {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.cookie-title {
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-right: 1.5rem;
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.cookie-title i {
+    color: #bc4f07;
+    font-size: 1.25rem;
+}
+
+.cookie-text {
+    color: #ffffff;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+.cookie-link {
+    color: #6bc4a6;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.cookie-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #6bc4a6;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.cookie-link:hover::after {
+    transform: scaleX(1);
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.cookie-button-reject,
+.cookie-button-accept {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 25px;
+}
+
+.cookie-button-reject {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.cookie-button-reject:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.cookie-button-accept {
+    background: #bc4f07;
+    color: #ffffff;
+    border: 2px solid #bc4f07;
+}
+
+.cookie-button-accept:hover {
+    background: #6bc4a6;
+    color: #005236;
+    border-color: #6bc4a6;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 992px) {
+    .cookie-container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .cookie-content {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+
+    .cookie-title {
+        margin-bottom: 0.5rem;
+    }
+
+    .cookie-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .cookie-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .cookie-button-reject,
+    .cookie-button-accept {
+        width: 100%;
+        text-align: center;
+    }
+}
+</style>
+<div id="cookieConsent" class="cookie-consent">
+    <div class="cookie-container">
+        <div class="cookie-content">
+            <h3 class="cookie-title">
+                <i class="fas fa-cookie-bite"></i>
+                Çerez Politikası
+            </h3>
+            <p class="cookie-text">
+                KahramanTıkla oyun deneyiminizi geliştirmek için çerezler kullanıyoruz. Web sitemizi kullanmaya devam ederek çerezlerin kullanımını kabul etmiş olursunuz. Daha fazla bilgi için
+                <a href="/Gizlilik826/" class="cookie-link">Gizlilik Politikamızı</a>,
+                <a href="/Kullanım346/" class="cookie-link">Hizmet Şartlarımızı</a>
+                ve
+                <a href="/cerez23/" class="cookie-link">Çerez Politikamızı</a>
+                okuyabilirsiniz.
+            </p>
+        </div>
+        
+        <div class="cookie-buttons">
+            <button id="rejectCookies" class="cookie-button-reject">
+                Reddet
+            </button>
+            <button id="acceptCookies" class="cookie-button-accept">
+                Kabul Et
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+   const cookieConsent = document.getElementById("cookieConsent");
+   const acceptBtn = document.getElementById("acceptCookies");
+   const rejectBtn = document.getElementById("rejectCookies");
+   
+   if (!getCookie("aprenderd_cookie_consent")) {
+       setTimeout(() => {
+           cookieConsent.style.transform = "translateX(0)";
+       }, 1000);
+   }
+
+   function getCookie(name) {
+       let matches = document.cookie.match(new RegExp(
+           "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"
+       ));
+       return matches ? decodeURIComponent(matches[1]) : undefined;
+   }
+   
+   function setCookie(name, value, days) {
+       const date = new Date();
+       date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+       const expires = "; expires=" + date.toUTCString();
+       document.cookie = name + "=" + value + expires + "; path=/; SameSite=Strict; Secure";
+   }
+
+   function handleConsent(consent) {
+       setCookie("aprenderd_cookie_consent", consent, 365);
+       cookieConsent.style.transform = "translateX(120%)";
+       
+       setTimeout(() => {
+           cookieConsent.remove();
+       }, 500);
+   }
+
+   acceptBtn.addEventListener("click", () => handleConsent("accepted"));
+   rejectBtn.addEventListener("click", () => handleConsent("rejected"));
+});
+</script>
+';
+
+if (!isset($_COOKIE["aprenderd_cookie_consent"])) {
+    echo $cookieConsentHtml;
+}
+?>

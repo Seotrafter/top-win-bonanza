@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KahramanTıkla | Click Chronicles Idle Hero</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel='icon' href='/src/icons/logo.png' type='image/x-icon'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sigmar&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#20686c',
+                        secondary: '#005236',
+                        tertiary: '#bc4f07',
+                        accent: '#6bc4a6',
+                        light: '#ffffff'
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': {
+                                transform: 'translateY(0)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-10px)'
+                            },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: "Work Sans", sans-serif;
+        }
+
+        .title-sec {
+            font-family: "Sigmar", sans-serif;
+        }
+
+        .bg-dots {
+            background-image: radial-gradient(#20686c 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .rainbow-line {
+            background: linear-gradient(90deg, #20686c, #005236, #bc4f07, #6bc4a6);
+            height: 4px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Card hover animations */
+        .shadow-lg {
+            transition: all 0.3s ease;
+        }
+
+        /* Gradient line animation */
+        .rainbow-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            width: 100%;
+            background: linear-gradient(90deg, #20686c, #005236, #bc4f07, #6bc4a6);
+            z-index: 1000;
+        }
+
+        /* Floating elements animation */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .float-element {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Highlight focus elements */
+        .focus-highlight:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(107, 196, 166, 0.5);
+        }
+
+        /* Enhanced link styles */
+        .text-tertiary {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .text-tertiary:hover {
+            color: #bc4f07;
+        }
+
+        /* Section transitions */
+        section {
+            transition: background-color 0.5s ease;
+        }
+
+        /* Decorative circles */
+        .circle-decoration {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        /* Improved card styles */
+        .bg-white {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Responsive typography improvements */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+            }
+
+            .text-lg {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans text-gray-800 bg-light">
+    <!-- Floating Elements -->
+    <div class="fixed w-full h-full pointer-events-none z-0 bg-dots opacity-10"></div>
+
+    <!-- Rainbow Line -->
+    <div class="rainbow-line w-full"></div>
+
+    <!-- Header -->
+    <header class="sticky top-0 bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between">
+            <a href="/" class="flex items-center mb-4 md:mb-0">
+                <img src="/src/icons/logo.png" alt="KahramanTıkla Logo" class="w-12 h-12  mr-3">
+                <span class="text-3xl title-sec font-bold text-primary">KahramanTıkla</span>
+            </a>
+
+            <nav class="flex flex-wrap justify-center space-x-1 md:space-x-6">
+                <a href="/#anasayfa" class="px-3 py-2 text-lg font-semibold text-primary hover:text-tertiary transition-colors duration-300">Ana Sayfa</a>
+                <a href="/#oynanış" class="px-3 py-2 text-lg font-semibold text-primary hover:text-tertiary transition-colors duration-300">Oynanış</a>
+                <a href="/#hikaye" class="px-3 py-2 text-lg font-semibold text-primary hover:text-tertiary transition-colors duration-300">Hikaye</a>
+                <a href="/#özellikler" class="px-3 py-2 text-lg font-semibold text-primary hover:text-tertiary transition-colors duration-300">Özellikler</a>
+                <a href="/#indirme" class="px-3 py-2 text-lg font-semibold text-white bg-tertiary hover:bg-primary rounded-lg transition-colors duration-300 shadow-lg">İndir</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Terms and Conditions Header Section -->
+    <section class="py-16 bg-secondary relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <!-- Wave pattern -->
+            <svg class="absolute bottom-0 left-0 w-full h-20 text-white opacity-10" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                <path fill="currentColor" d="M0,160L48,149.3C96,139,192,117,288,122.7C384,128,480,160,576,165.3C672,171,768,149,864,149.3C960,149,1056,171,1152,165.3C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+
+        <!-- Decorative circles -->
+        <div class="absolute top-10 right-10 w-24 h-24 rounded-full border-4 border-tertiary opacity-10"></div>
+        <div class="absolute bottom-10 left-10 w-16 h-16 bg-accent rounded-full opacity-10"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">Şartlar ve Koşullar</h1>
+                <div class="w-24 h-2 bg-tertiary mx-auto rounded-full mb-8"></div>
+                <p class="text-xl text-white opacity-90">
+                    KahramanTıkla web sitesi kullanımına ilişkin kurallar ve düzenlemeler
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms Introduction Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-lg border-t-4 border-secondary">
+                <div class="mb-10 text-center">
+                    <h2 class="text-3xl font-bold text-primary mb-6">KahramanTıkla'ya Hoş Geldiniz!</h2>
+                    <div class="w-16 h-1 bg-tertiary mx-auto rounded-full"></div>
+                </div>
+
+                <div class="prose prose-lg max-w-none">
+                    <p class="text-lg text-gray-700 mb-6">
+                        Bu şartlar ve koşullar, <a href="https://top-win-bonanza.com/" class="text-tertiary hover:underline font-medium">https://top-win-bonanza.com/</a> adresinde bulunan KahramanTıkla web sitesinin kullanımına ilişkin kuralları ve düzenlemeleri içermektedir.
+                    </p>
+
+                    <p class="text-lg text-gray-700 mb-6">
+                        Bu web sitesine erişerek, bu şartlar ve koşulları kabul ettiğinizi varsayıyoruz. Eğer bu sayfada belirtilen tüm şartları ve koşulları kabul etmiyorsanız, lütfen KahramanTıkla'yı kullanmaya devam etmeyin.
+                    </p>
+
+                    <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-primary my-8">
+                        <p class="text-lg text-gray-700 mb-4">
+                            Aşağıdaki terminoloji, bu Şartlar ve Koşullar, Gizlilik Bildirimi ve Feragat Bildirimi ve tüm Sözleşmeler için geçerlidir:
+                        </p>
+                        <ul class="space-y-2">
+                            <li class="flex">
+                                <span class="text-primary font-bold mr-2">&bull;</span>
+                                <span>"Müşteri", "Siz" ve "Sizin" ifadeleri, bu web sitesine giriş yapan ve Şirketin şartlarına ve koşullarına uyan kişiyi ifade eder.</span>
+                            </li>
+                            <li class="flex">
+                                <span class="text-primary font-bold mr-2">&bull;</span>
+                                <span>"Şirket", "Biz", "Bize" ve "Bizim" ifadeleri ise şirketimizi ifade eder.</span>
+                            </li>
+                            <li class="flex">
+                                <span class="text-primary font-bold mr-2">&bull;</span>
+                                <span>"Taraf", "Taraflar" veya "Bize" ifadeleri, hem Müşteri'yi hem de bizi ifade eder.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <p class="text-lg text-gray-700 mb-6">
+                        Bu terimler, Hollanda yasalarına uygun olarak ve belirtilen hizmetlerin sağlanması amacıyla müşteriye yardım sürecini kapsayan teklif, kabul ve ödeme değerlendirmesini ifade eder. Yukarıdaki terminolojinin tekil, çoğul, büyük harf veya cinsiyet değişiklikleri içeren herhangi bir kullanımı, aynı anlamı taşıyacak şekilde yorumlanır.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Cookies and License Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <!-- Cookies Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-accent mb-10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <span class="w-10 h-10 bg-accent text-primary rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-cookie-bite"></i>
+                            </span>
+                            Çerezler
+                        </h3>
+                        <div class="pl-0 md:pl-14 space-y-4">
+                            <p class="text-lg text-gray-700">
+                                Biz çerezleri kullanıyoruz. KahramanTıkla'ya erişerek, çerezleri kullanımımızı kabul etmiş oluyorsunuz.
+                            </p>
+                            <p class="text-lg text-gray-700">
+                                Çoğu etkileşimli web sitesi, kullanıcının bilgilerini her ziyaretinde almak için çerezleri kullanır. Çerezler, web sitemizde belirli alanların işlevselliğini etkinleştirmek ve ziyaretçilerin web sitemizi daha kolay kullanmasını sağlamak için kullanılır. Bazı reklam ve ortaklık programı ortaklarımız da çerez kullanabilir.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- License Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-tertiary transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <span class="w-10 h-10 bg-tertiary text-white rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-copyright"></i>
+                            </span>
+                            Lisans
+                        </h3>
+                        <div class="pl-0 md:pl-14 space-y-4">
+                            <p class="text-lg text-gray-700">
+                                Aksi belirtilmediği sürece, KahramanTıkla ve/veya lisans verenleri, KahramanTıkla'daki tüm materyallerin fikri mülkiyet haklarına sahiptir. Tüm fikri mülkiyet hakları saklıdır. Bu web sitesindeki içeriğe yalnızca kişisel kullanımınız için, bu şartlar ve koşullarda belirtilen kısıtlamalara tabi olarak erişebilirsiniz.
+                            </p>
+
+                            <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-primary">
+                                <p class="text-lg font-semibold text-primary mb-3">Şunları yapmamalısınız:</p>
+                                <ul class="space-y-2">
+                                    <li class="flex items-start">
+                                        <span class="text-tertiary mr-2">•</span>
+                                        <span>KahramanTıkla'daki materyalleri yeniden yayımlamak.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-tertiary mr-2">•</span>
+                                        <span>KahramanTıkla'daki materyalleri satmak, kiralamak veya alt lisans vermek.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-tertiary mr-2">•</span>
+                                        <span>KahramanTıkla'daki materyalleri çoğaltmak, kopyalamak veya kopyalarını almak.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-tertiary mr-2">•</span>
+                                        <span>KahramanTıkla'daki içeriği yeniden dağıtmak.</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <p class="text-lg text-gray-700">
+                                Bu sözleşme, bu tarihten itibaren yürürlüğe girer.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Comments and Linking Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <!-- Comments Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-primary mb-10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <span class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-comments"></i>
+                            </span>
+                            Kullanıcı Yorumları
+                        </h3>
+                        <div class="pl-0 md:pl-14 space-y-4">
+                            <p class="text-lg text-gray-700">
+                                Web sitesinin belirli bölümleri, kullanıcıların yorum ve görüşlerini paylaşmalarına olanak tanır. KahramanTıkla, yorumları yayınlamadan önce filtrelemez, düzenlemez veya incelemez. Yorumlar yalnızca yorum yapan kişinin görüş ve düşüncelerini yansıtır. Geçerli yasaların izin verdiği ölçüde, KahramanTıkla, yorumlardan veya bu yorumların neden olduğu herhangi bir yükümlülük, zarar veya masraftan sorumlu tutulamaz.
+                            </p>
+                            <p class="text-lg text-gray-700">
+                                KahramanTıkla, tüm yorumları izleme ve uygunsuz, saldırgan veya bu Şartlar ve Koşulların ihlaline neden olan yorumları kaldırma hakkını saklı tutar.
+                            </p>
+
+                            <div class="bg-gray-50 p-6 rounded-xl border-l-4 border-accent mt-6">
+                                <p class="text-lg font-semibold text-primary mb-3">Şu konularda garanti ve beyan veriyorsunuz:</p>
+                                <ul class="space-y-2">
+                                    <li class="flex items-start">
+                                        <span class="text-accent mr-2">•</span>
+                                        <span>Web sitemizde yorum yayınlama hakkına sahipsiniz ve gerekli tüm lisanslara ve izinlere sahipsiniz.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-accent mr-2">•</span>
+                                        <span>Yorumlar herhangi bir üçüncü tarafın telif hakkını, patentini veya ticari markasını ihlal etmez.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-accent mr-2">•</span>
+                                        <span>Yorumlar, karalayıcı, saldırgan, müstehcen veya yasadışı materyal içermez.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <span class="text-accent mr-2">•</span>
+                                        <span>Yorumlar, ticari faaliyetleri veya yasadışı eylemleri teşvik etmek için kullanılmaz.</span>
+                                    </li>
+                                </ul>
+                                <p class="text-lg text-gray-700 mt-4">
+                                    Yorumlarınızı, tüm biçimlerde, formatlarda veya medyalarda kullanmak, çoğaltmak, düzenlemek ve başkalarına yetki vermek için KahramanTıkla'ya münhasır olmayan bir lisans veriyorsunuz.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linking Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-secondary transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <span class="w-10 h-10 bg-secondary text-white rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-link"></i>
+                            </span>
+                            İçeriğimize Bağlantı Verme
+                        </h3>
+                        <div class="pl-0 md:pl-14 space-y-4">
+                            <p class="text-lg text-gray-700">
+                                Aşağıdaki kuruluşlar, önceden yazılı onay almadan web sitemize bağlantı verebilir:
+                            </p>
+
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+                                <li class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                    <span class="w-8 h-8 bg-tertiary text-white rounded-full flex items-center justify-center mr-3">
+                                        <i class="fas fa-building"></i>
+                                    </span>
+                                    <span>Devlet kurumları.</span>
+                                </li>
+                                <li class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                    <span class="w-8 h-8 bg-tertiary text-white rounded-full flex items-center justify-center mr-3">
+                                        <i class="fas fa-search"></i>
+                                    </span>
+                                    <span>Arama motorları.</span>
+                                </li>
+                                <li class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                    <span class="w-8 h-8 bg-tertiary text-white rounded-full flex items-center justify-center mr-3">
+                                        <i class="fas fa-newspaper"></i>
+                                    </span>
+                                    <span>Haber kuruluşları.</span>
+                                </li>
+                                <li class="flex items-center bg-gray-50 p-3 rounded-lg">
+                                    <span class="w-8 h-8 bg-tertiary text-white rounded-full flex items-center justify-center mr-3">
+                                        <i class="fas fa-list"></i>
+                                    </span>
+                                    <span>Çevrim içi dizin dağıtıcıları.</span>
+                                </li>
+                                <li class="flex items-center bg-gray-50 p-3 rounded-lg md:col-span-2">
+                                    <span class="w-8 h-8 bg-tertiary text-white rounded-full flex items-center justify-center mr-3">
+                                        <i class="fas fa-briefcase"></i>
+                                    </span>
+                                    <span>Akredite işletmeler (kâr amacı gütmeyen kuruluşlar, yardım alışveriş merkezleri ve yardım toplama grupları hariç).</span>
+                                </li>
+                            </ul>
+
+                            <p class="text-lg text-gray-700 mt-4">
+                                Bu kuruluşlar, şu koşulları yerine getirdikleri sürece web sitemize bağlantı verebilirler:
+                            </p>
+
+                            <ul class="space-y-2 mt-2">
+                                <li class="flex items-start">
+                                    <span class="text-tertiary mr-2">•</span>
+                                    <span>Bağlantı hiçbir şekilde yanıltıcı olmamalıdır.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-tertiary mr-2">•</span>
+                                    <span>Bağlantı, bağlayan tarafın ürün veya hizmetlerini desteklediğimizi ima etmemelidir.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-tertiary mr-2">•</span>
+                                    <span>Bağlantı, bağlayan tarafın sitesinin içeriğiyle uyumlu olmalıdır.</span>
+                                </li>
+                            </ul>
+
+                            <p class="text-lg text-gray-700 mt-4">
+                                Eğer yukarıda belirtilen kuruluşlardan biriyseniz ve web sitemize bağlantı vermek istiyorsanız, lütfen KahramanTıkla'ya bir e-posta göndererek bize bildirin.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- iFrames, Content Responsibility and Disclaimers Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <!-- iFrames Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-accent mb-10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <span class="w-10 h-10 bg-accent text-primary rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-window-maximize"></i>
+                            </span>
+                            iFrames
+                        </h3>
+                        <p class="text-lg text-gray-700 pl-0 md:pl-14">
+                            Önceden yazılı izin almadan, web sitemizin görsel sunumunu veya görünümünü değiştiren çerçeveler oluşturamazsınız.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Content Responsibility Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-tertiary mb-10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <span class="w-10 h-10 bg-tertiary text-white rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </span>
+                            İçerik Sorumluluğu
+                        </h3>
+                        <div class="pl-0 md:pl-14 space-y-4">
+                            <p class="text-lg text-gray-700">
+                                Web sitenizde görünen hiçbir içerikten sorumlu değiliz. Web sitenizde ortaya çıkan tüm iddialara karşı bizi korumayı ve savunmayı kabul ediyorsunuz. Web sitenizde, üçüncü taraf haklarını ihlal eden veya yasadışı, saldırgan veya suç teşkil edebilecek hiçbir bağlantının bulunmamasını sağlamalısınız.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rights Reserved Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-primary mb-10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <span class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-shield-alt"></i>
+                            </span>
+                            Hakların Saklı Tutulması
+                        </h3>
+                        <div class="pl-0 md:pl-14 space-y-4">
+                            <p class="text-lg text-gray-700">
+                                Web sitemize olan tüm bağlantıları kaldırmanızı talep etme hakkını saklı tutarız. Talep edildiğinde web sitemize verilen tüm bağlantıları derhal kaldırmayı kabul ediyorsunuz. Ayrıca, bu şartları ve bağlantı politikamızı herhangi bir zamanda değiştirme hakkını saklı tutarız. Web sitemize sürekli olarak bağlantı vermeye devam ederek, bu bağlantı şartlarına uymayı kabul ediyorsunuz.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Disclaimers Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-t-4 border-secondary mb-10 transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <span class="w-10 h-10 bg-secondary text-white rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-file-contract"></i>
+                            </span>
+                            Sorumluluk Reddi
+                        </h3>
+                        <div class="pl-0 md:pl-14 space-y-4">
+                            <p class="text-lg text-gray-700">
+                                Geçerli yasaların izin verdiği en geniş ölçüde, web sitemiz ve kullanımına ilişkin tüm beyanları, garantileri ve koşulları hariç tutuyoruz. Bu sorumluluk reddi beyanında hiçbir şey:
+                            </p>
+
+                            <ul class="space-y-2 mt-2">
+                                <li class="flex items-start">
+                                    <span class="text-tertiary mr-2">•</span>
+                                    <span>Ölüm veya kişisel yaralanma için bizim veya sizin sorumluluğunuzu sınırlamaz veya hariç tutmaz.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-tertiary mr-2">•</span>
+                                    <span>Dolandırıcılık veya sahte beyan için bizim veya sizin sorumluluğunuzu sınırlamaz veya hariç tutmaz.</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-tertiary mr-2">•</span>
+                                    <span>Geçerli yasalar kapsamında sınırlandırılamayan herhangi bir yükümlülüğümüzü sınırlandırmaz.</span>
+                                </li>
+                            </ul>
+
+                            <p class="text-lg text-gray-700 mt-4">
+                                Web sitemiz ücretsiz olarak sağlandığı sürece, herhangi bir kayıp veya hasardan sorumlu olmayacağız.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Şartlar ve Koşullarımızı Kabul Ediyor musunuz?</h2>
+                <p class="text-xl mb-8 opacity-90">
+                    Web sitemizi kullanmaya devam ederek, bu şartları ve koşulları kabul etmiş olursunuz.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/" class="px-8 py-4 bg-tertiary text-white text-lg font-bold rounded-lg hover:bg-accent hover:text-primary transition-colors duration-300 shadow-lg">
+                        <i class="fas fa-home mr-2"></i> Ana Sayfaya Dön
+                    </a>
+                    <a href="/Gizlilik826/" class="px-8 py-4 bg-accent text-primary text-lg font-bold rounded-lg hover:bg-tertiary hover:text-white transition-colors duration-300 shadow-lg">
+                        <i class="fas fa-user-shield mr-2"></i> Gizlilik Politikası
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="py-10 bg-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="/" class="flex items-center">
+                        <img src="/src/icons/logo.png" alt="KahramanTıkla Logo" class="w-10 h-10 mr-3">
+                        <span class="text-2xl font-bold">KahramanTıkla</span>
+                    </a>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-4 mb-6 md:mb-0">
+                    <a href="/Gizlilik826/" class="text-sm font-medium hover:text-accent transition-colors duration-300">Gizlilik Politikası</a>
+                    <a href="/Kullanım346/" class="text-sm font-medium hover:text-accent transition-colors duration-300">Kullanım Koşulları</a>
+                    <a href="/cerez23/" class="text-sm font-medium hover:text-accent transition-colors duration-300">Çerezler</a>
+                    <a href="mailto:service@top-win-bonanza.com" class="text-sm font-medium hover:text-accent transition-colors duration-300">İletişim</a>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-white/20 text-center text-sm">
+                <p>© 2025 KahramanTıkla. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll animation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+
+<?php
+$cookieConsentHtml = '
+<style>
+.cookie-consent {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 101;
+    background: #20686c; 
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    border-top: 3px solid #bc4f07;
+}
+
+.cookie-container {
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cookie-content {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.cookie-title {
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-right: 1.5rem;
+    margin-bottom: 0;
+    white-space: nowrap;
+}
+
+.cookie-title i {
+    color: #bc4f07;
+    font-size: 1.25rem;
+}
+
+.cookie-text {
+    color: #ffffff;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+.cookie-link {
+    color: #6bc4a6;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.cookie-link::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #6bc4a6;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.cookie-link:hover::after {
+    transform: scaleX(1);
+}
+
+.cookie-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.cookie-button-reject,
+.cookie-button-accept {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 25px;
+}
+
+.cookie-button-reject {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+.cookie-button-reject:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.cookie-button-accept {
+    background: #bc4f07;
+    color: #ffffff;
+    border: 2px solid #bc4f07;
+}
+
+.cookie-button-accept:hover {
+    background: #6bc4a6;
+    color: #005236;
+    border-color: #6bc4a6;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 992px) {
+    .cookie-container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .cookie-content {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+
+    .cookie-title {
+        margin-bottom: 0.5rem;
+    }
+
+    .cookie-buttons {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .cookie-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .cookie-button-reject,
+    .cookie-button-accept {
+        width: 100%;
+        text-align: center;
+    }
+}
+</style>
+<div id="cookieConsent" class="cookie-consent">
+    <div class="cookie-container">
+        <div class="cookie-content">
+            <h3 class="cookie-title">
+                <i class="fas fa-cookie-bite"></i>
+                Çerez Politikası
+            </h3>
+            <p class="cookie-text">
+                KahramanTıkla oyun deneyiminizi geliştirmek için çerezler kullanıyoruz. Web sitemizi kullanmaya devam ederek çerezlerin kullanımını kabul etmiş olursunuz. Daha fazla bilgi için
+                <a href="/Gizlilik826/" class="cookie-link">Gizlilik Politikamızı</a>,
+                <a href="/Kullanım346/" class="cookie-link">Hizmet Şartlarımızı</a>
+                ve
+                <a href="/cerez23/" class="cookie-link">Çerez Politikamızı</a>
+                okuyabilirsiniz.
+            </p>
+        </div>
+        
+        <div class="cookie-buttons">
+            <button id="rejectCookies" class="cookie-button-reject">
+                Reddet
+            </button>
+            <button id="acceptCookies" class="cookie-button-accept">
+                Kabul Et
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+   const cookieConsent = document.getElementById("cookieConsent");
+   const acceptBtn = document.getElementById("acceptCookies");
+   const rejectBtn = document.getElementById("rejectCookies");
+   
+   if (!getCookie("aprenderd_cookie_consent")) {
+       setTimeout(() => {
+           cookieConsent.style.transform = "translateX(0)";
+       }, 1000);
+   }
+
+   function getCookie(name) {
+       let matches = document.cookie.match(new RegExp(
+           "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"
+       ));
+       return matches ? decodeURIComponent(matches[1]) : undefined;
+   }
+   
+   function setCookie(name, value, days) {
+       const date = new Date();
+       date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+       const expires = "; expires=" + date.toUTCString();
+       document.cookie = name + "=" + value + expires + "; path=/; SameSite=Strict; Secure";
+   }
+
+   function handleConsent(consent) {
+       setCookie("aprenderd_cookie_consent", consent, 365);
+       cookieConsent.style.transform = "translateX(120%)";
+       
+       setTimeout(() => {
+           cookieConsent.remove();
+       }, 500);
+   }
+
+   acceptBtn.addEventListener("click", () => handleConsent("accepted"));
+   rejectBtn.addEventListener("click", () => handleConsent("rejected"));
+});
+</script>
+';
+
+if (!isset($_COOKIE["aprenderd_cookie_consent"])) {
+    echo $cookieConsentHtml;
+}
+?>
